@@ -26,6 +26,8 @@ from .compilers import (
     get_gcc_soname_args,
     gnulike_buildtype_args,
     gnulike_buildtype_linker_args,
+    gnu_optimization_args,
+    clike_debug_args,
     Compiler,
     ElbrusCompiler,
     IntelCompiler,
@@ -85,6 +87,12 @@ end program prog
 
     def get_buildtype_args(self, buildtype):
         return gnulike_buildtype_args[buildtype]
+
+    def get_optimization_args(self, optimization_level):
+        return gnu_optimization_args[optimization_level]
+
+    def get_debug_args(self, is_debug):
+        return clike_debug_args[is_debug]
 
     def get_buildtype_linker_args(self, buildtype):
         if is_osx():
